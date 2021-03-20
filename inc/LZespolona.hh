@@ -1,6 +1,10 @@
 #ifndef LZESPOLONA_HH
 #define LZESPOLONA_HH
 
+#include <ios>
+#include <istream>
+#include <ostream>      // <iostream> wyrzucalo mi bledy :P nie wiem czemu
+#include <streambuf>
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
  *  przeciazen operatorow arytmetycznych dzialajacych na tej 
@@ -21,10 +25,16 @@ struct  LZespolona {
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
  */
 
-bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);
+std::ostream& operator << (std::ostream& struwyj,LZespolona skl);
+std::istream& operator >> (std::istream& struwej,LZespolona skl);
 
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
 
-LZespolona operator / (LZespolona Skl1, double Skl2);
+bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);        //Porownanie
+LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);   //Dodawanie
+LZespolona operator-(LZespolona Skl1, LZespolona Skl2);         // Odejmowanie
+LZespolona operator*(LZespolona Skl1, LZespolona Skl2);         //Mnozenie
+LZespolona operator ~ (LZespolona Skl1);                          //Modul liczby
+LZespolona operator!(LZespolona Skl1);                          //Sprzezenie liczby
+LZespolona operator/(LZespolona Skl1, LZespolona Skl2);         //Dzielenie            
 
 #endif
