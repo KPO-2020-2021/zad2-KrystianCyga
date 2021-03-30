@@ -21,7 +21,7 @@ std::istream &operator>>(std::istream struwej, LZespolona &skl)
     return struwej;
   if (naw != '(')
   {
-    struwej.setstate(ios::failbit);
+    struwej.setstate (std::ios::failbit);
     return struwej;
   }
   struwej >> skl.re;
@@ -35,7 +35,7 @@ std::istream &operator>>(std::istream struwej, LZespolona &skl)
     return struwej;
   if (lit != 'i')
   {
-    struwej.setstate(ios::failbit);
+    struwej.setstate(std::ios::failbit);
     return struwej;
   }
   struwej >> naw;
@@ -43,7 +43,7 @@ std::istream &operator>>(std::istream struwej, LZespolona &skl)
     return struwej;
   if (naw != ')')
   {
-    struwej.setstate(ios::failbit);
+    struwej.setstate(std::ios::failbit);
     return struwej;
   }
 }
@@ -124,7 +124,7 @@ LZespolona operator*(LZespolona Skl1, LZespolona Skl2)
  *    Modul liczby w postaci double
  */
 
-double operator~(LZespolona Skl1)
+double operator -- (LZespolona Skl1)
 {
   double Wynik;
   Wynik = sqrt(Skl1.re * Skl1.re + Skl1.im * Skl1.im);
@@ -159,7 +159,7 @@ LZespolona operator/(LZespolona Skl1, LZespolona Skl2)
 {
 
   LZespolona Wynik;
-  double modul = (~Skl2);
+  double modul = (--Skl2 );
 
   if (modul)
   {
