@@ -2,22 +2,21 @@
 
 std::ostream &operator<<(std::ostream &struwyj, WyrazenieZesp wyr1)
 {
-  struwyj << "(" << wyr1.Arg1 << std::showpos << wyr1.Arg2 << "i"
-          << ")" << std::noshowpos;
-  return struwyj;
+    struwyj<< wyr1.Arg1 << wyr1.dajsymbol(wyr1.Op) << wyr1.Arg2;
+    return struwyj;
 }
 
 std::istream &operator>>(std::istream &struwej, WyrazenieZesp &wyr1)
 {
-  char znak, ilit;
-  struwej >> wyr1.Arg1;
-  struwej >> znak;
-  wyr1.Op=wczytajoper(znak);
-  struwej >> wyr1.Arg2;
-  return struwej;
+    char znak, ilit;
+    struwej >> wyr1.Arg1;
+    struwej >> znak;
+    wyr1.Op = (wyr1.wczytajoper(znak));
+    struwej >> wyr1.Arg2;
+    return struwej;
 }
 
-Operator wczytajoper(char znak)
+Operator WyrazenieZesp::wczytajoper(char znak)
 {
     Operator oper;
     switch (znak)
@@ -37,8 +36,30 @@ Operator wczytajoper(char znak)
     }
     return oper;
 }
+Operator WyrazenieZesp::wczytajoper()
+{
+    Operator oper;
+    char symbol;
+    std::cin>> symbol;
+    switch (symbol)
+    {
+    case '-':
+        oper = Op_Odejmij;
+        break;
+    case '+':
+        oper = Op_Dodaj;
+        break;
+    case '*':
+        oper = Op_Mnoz;
+        break;
+    case '/':
+        oper = Op_Dziel;
+        break;
+    }
+    return oper;
+}
 
-char dajsymbol(Operator oper)
+char WyrazenieZesp::dajsymbol(Operator oper)
 {
     char znak;
     switch (oper)
@@ -60,28 +81,27 @@ char dajsymbol(Operator oper)
     return znak;
 }
 
-LZespolona oblicz(WyrazenieZesp wyr1)
+LZespolona WyrazenieZesp::oblicz(WyrazenieZesp wyr1)
 {
     LZespolona pier;
-    switch (wyr1.Op)
+    switch (Op)
     {
     case Op_Dodaj:
-        return operator+(wyr1.Arg1, wyr1.Arg2);
+        return operator+(Arg1, Arg2);
         break;
     case Op_Odejmij:
-        return operator-(wyr1.Arg1, wyr1.Arg2);
+        return operator-(Arg1, Arg2);
         break;
     case Op_Dziel:
-        return operator/(wyr1.Arg1, wyr1.Arg2);
+        return operator/(Arg1, Arg2);
         break;
     case Op_Mnoz:
-        return operator*(wyr1.Arg1, wyr1.Arg2);
+        return operator*(Arg1, Arg2);
         break;
     }
     return pier;
 }
-
-void wyswietloper(Operator oper)
+void WyrazenieZesp::wyswietloper(Operator oper)
 {
     switch (oper)
     {
@@ -100,25 +120,23 @@ void wyswietloper(Operator oper)
     }
 }
 
-void wyswietlwyraz(WyrazenieZesp wyr1)
+void WyrazenieZesp::wyswietlwyraz(WyrazenieZesp wyr1)
 {
-    wyswietl(wyr1.Arg1);
-    wyswietloper(wyr1.Op);
-    wyswietl(wyr1.Arg2);
+    wyswietl(Arg1);
+    wyswietloper(Op);
+    wyswietl(Arg2);
     std::cout << "\n";
 }
 
-
-WyrazenieZesp wczytajwyrazenie()
+WyrazenieZesp WyrazenieZesp::wczytajwyrazenie()
 {
-    LZespolona pier,drug;
+    LZespolona pier, drug;
     WyrazenieZesp wyr1;
-    pier=wczytaj();
-    Operator oper = wczytajoper();
-    drug=wczytaj();
-    wyr1.Arg1=pier;
-    wyr1.Op=oper;
-    wyr1.Arg2=drug;
+    pier = wczytaj();
+    Operator oper = WyrazenieZesp::wczytajoper();
+    drug = wczytaj();
+    Arg1 = pier;
+    Op = oper;
+    Arg2 = drug;
     return wyr1;
-
 }

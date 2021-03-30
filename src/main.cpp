@@ -1,7 +1,8 @@
 #include <iostream>
-#include "BazaTestu.hh"
+#include "inc/BazaTestu.hh"
 #include "inc/Statystyki.hh"
-
+#include "inc/WyrazenieZesp.hh"
+#include "inc/LZespolona.hh"
 
 using namespace std;
 
@@ -49,12 +50,12 @@ int main(int argc, char **argv)
     }
     a = pier.im;
     b = pier.re;
-    pier = Oblicz(WyrZ_PytanieTestowe);
+    pier = (WyrZ_PytanieTestowe.oblicz(WyrZ_PytanieTestowe));
     if (pier.re == a && pier.im == b) 
     {
-      std::cout << "Odpowiedz poprawna :)" << endl
+      std::cout << "Odpowiedz poprawna" << endl
                 << endl;
-      ++staty.git; 
+      ++staty.good; 
     }
     else 
     {
@@ -64,5 +65,8 @@ int main(int argc, char **argv)
       ++staty.bad;
     }
   }
+  std::cout<<"Koniec Testu\n";
+
+  staty.wyswietl();
 }
 

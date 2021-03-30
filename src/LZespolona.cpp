@@ -170,8 +170,7 @@ LZespolona operator/(LZespolona Skl1, LZespolona Skl2)
   }
   else
   {
-    std::cout << "\nModul liczby Z_2 jest zerem!\nliczb nie mozna podzielić!\n";
-    std::cout << "Liczba Z_2: ";
+    std::cerr << "\nModul liczby Z_2 jest zerem!\nliczb nie mozna podzielić!\n";
   }
 }
 /*funkcja wyswietlajaca liczbe*/

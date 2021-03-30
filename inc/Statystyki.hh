@@ -1,9 +1,6 @@
-#ifndef WYRAZENIEZESP_HH
-#define WYRAZENIEZESP_HH
-
-#include "LZespolona.hh"
-#include "WyrazenieZesp.hh"
-
+#ifndef STATYSTYKI_HH
+#define STATYSTYKI_HH
+#include <iostream>
 
 struct statystyka
 {

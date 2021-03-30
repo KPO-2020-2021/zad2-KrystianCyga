@@ -9,6 +9,7 @@ using namespace std;
  * Tablica, ktora jest widoczna tylko w tym module.
  * Zawiera ona tresc latwego testu.
  */
+
 static WyrazenieZesp  TestLatwy[] =
   { {{2,1}, Op_Dodaj, {1,2}},
     {{1,0}, Op_Odejmij, {0,1}},
@@ -16,18 +17,12 @@ static WyrazenieZesp  TestLatwy[] =
     {{4,8}, Op_Dziel, {1,0}},
   };
 
-/*
- * Analogicznie zdefiniuj test "trudne"
- *
- */
 static WyrazenieZesp  TestTrudny[] =
   { {{2.5,0.2}, Op_Dodaj, {-5,9}},
     {{-1,-1}, Op_Odejmij, {-5,-6}},
     {{7,0}, Op_Mnoz, {0,7}},
     {{2,5}, Op_Dziel, {0,0}},
   };
-
-
 
 
 /*
