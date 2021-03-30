@@ -1,14 +1,15 @@
+#include "iostream"
 #include "WyrazenieZesp.hh"
 
-std::ostream &operator<<(std::ostream &struwyj, WyrazenieZesp wyr1)
+std::ostream& operator<<(std::ostream& struwyj, WyrazenieZesp wyr1)
 {
     struwyj<< wyr1.Arg1 << wyr1.dajsymbol(wyr1.Op) << wyr1.Arg2;
     return struwyj;
 }
 
-std::istream &operator>>(std::istream &struwej, WyrazenieZesp &wyr1)
+std::istream& operator>>(std::istream& struwej, WyrazenieZesp &wyr1)
 {
-    char znak, ilit;
+    char znak;
     struwej >> wyr1.Arg1;
     struwej >> znak;
     wyr1.Op = (wyr1.wczytajoper(znak));
@@ -84,6 +85,8 @@ char WyrazenieZesp::dajsymbol(Operator oper)
 LZespolona WyrazenieZesp::oblicz(WyrazenieZesp wyr1)
 {
     LZespolona pier;
+    pier.im=0;
+    pier.re=0;
     switch (Op)
     {
     case Op_Dodaj:

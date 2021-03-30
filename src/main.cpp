@@ -1,8 +1,6 @@
 #include <iostream>
 #include "BazaTestu.hh"
 #include "Statystyki.hh"
-#include "WyrazenieZesp.hh"
-#include "LZespolona.hh"
 
 using namespace std;
 
@@ -30,7 +28,7 @@ int main(int argc, char **argv)
   cout << endl;
 
   WyrazenieZesp WyrZ_PytanieTestowe;
-  LZespolona pier, drug;
+  LZespolona pier;
   statystyka staty;
   double a, b;
 

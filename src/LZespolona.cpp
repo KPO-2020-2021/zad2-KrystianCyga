@@ -1,6 +1,5 @@
 #include "LZespolona.hh"
 #include <cmath>
-#include <iostream>
 
 #define MIN_DIFF 0.00001
 
@@ -46,6 +45,7 @@ std::istream &operator>>(std::istream &struwej, LZespolona &skl)
     struwej.setstate(std::ios::failbit);
     return struwej;
   }
+  return struwej;
 }
 
 /*!
@@ -172,6 +172,34 @@ LZespolona operator/(LZespolona Skl1, LZespolona Skl2)
   {
     std::cerr << "\nModul liczby Z_2 jest zerem!\nliczb nie mozna podzielić!\n";
   }
+  return Skl1;
+}
+
+/*!
+ * Realizuje dzielenie liczby zespolonej przez druga liczbe zespolona.
+ * Argumenty:
+ *    Skl1 - dzielona liczba zespolona,
+ *    Skl2 - liczba zespolona przez ktora dzielimy.
+ * Zwraca:
+ *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
+ */
+
+LZespolona operator/ (LZespolona Skl1, double skalar)
+{
+
+  LZespolona Wynik;
+  if (skalar)
+  {
+    Wynik.re = Skl1.re/skalar;
+    Wynik.im = Skl1.im/skalar;
+
+    return Wynik;
+  }
+  else
+  {
+    std::cerr << "\nskalar jest zerem!\nliczby nie mozna podzielić!\n";
+  }
+  return Skl1;
 }
 /*funkcja wyswietlajaca liczbe*/
 

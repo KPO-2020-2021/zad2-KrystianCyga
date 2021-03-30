@@ -26,7 +26,7 @@ struct  LZespolona {
  */
 
 std::ostream& operator << (std::ostream& struwyj,LZespolona skl);
-std::istream& operator >> (std::istream& struwej,LZespolona skl);
+std::istream& operator >> (std::istream& struwej,LZespolona &skl);
 
 void wyswietl(LZespolona licz);
 LZespolona wczytaj();
@@ -34,8 +34,9 @@ bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);        //Porownanie
 LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);   //Dodawanie
 LZespolona operator-(LZespolona Skl1, LZespolona Skl2);         // Odejmowanie
 LZespolona operator*(LZespolona Skl1, LZespolona Skl2);         //Mnozenie
-double operator ~ (LZespolona Skl1);                          //Modul liczby
+double operator ~ (LZespolona Skl1);                            //Modul liczby
 LZespolona operator!(LZespolona Skl1);                          //Sprzezenie liczby
-LZespolona operator/(LZespolona Skl1, LZespolona Skl2);         //Dzielenie            
+LZespolona operator/(LZespolona Skl1, LZespolona Skl2);         //Dzielenie       
+LZespolona operator/ (LZespolona Skl1, double skalar);          //Dzielenie przez liczbe
 
 #endif

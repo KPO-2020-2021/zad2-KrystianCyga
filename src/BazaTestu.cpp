@@ -21,7 +21,7 @@ static WyrazenieZesp  TestTrudny[] =
   { {{2.5,0.2}, Op_Dodaj, {-5,9}},
     {{-1,-1}, Op_Odejmij, {-5,-6}},
     {{7,0}, Op_Mnoz, {0,7}},
-    {{2,5}, Op_Dziel, {0,0}},
+    {{2,5}, Op_Dziel, {100,0}},
   };
 
 
@@ -101,8 +101,20 @@ bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char *sNazwaTestu )
  *        zainicjalizowany poprzez wywolanie funkcji InicjalizujTest.
  *      - Parametr wskWyrazenie nie moze byc pustym wskaznikiem. Musi wskazywac na
  *        istniejaca zmienna.
- *
- * Zwraca:
+ *TEST_CASE("test LZespolona Suma"){
+    LZespolona x, y, z;
+
+    x.re = 1;
+    x.im = 1;
+
+    y.re = 1;
+    y.im = -3;
+
+    z.re = 2;
+    z.im = -2;
+    
+    CHECK(x+y == z);
+}
  *       true - gdy operacja sie powiedzie i parametrowi *wskWyrazenie zostanie
  *              przypisane nowe wyrazenie zespolone z bazy,
  *       false - w przypadku przeciwnym.
