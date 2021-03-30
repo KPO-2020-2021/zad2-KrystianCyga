@@ -4,11 +4,13 @@
 #include "LZespolona.hh"
 #include "WyrazenieZesp.hh"
 
+
 struct statystyka
 {
+    public:
     int good;
     int bad;
-
+    
     void wyswietl();
     void addgood();
     void addbad();
