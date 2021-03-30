@@ -1,8 +1,8 @@
 #include <iostream>
-#include "inc/BazaTestu.hh"
-#include "inc/Statystyki.hh"
-#include "inc/WyrazenieZesp.hh"
-#include "inc/LZespolona.hh"
+#include "BazaTestu.hh"
+#include "Statystyki.hh"
+#include "WyrazenieZesp.hh"
+#include "LZespolona.hh"
 
 using namespace std;
 
