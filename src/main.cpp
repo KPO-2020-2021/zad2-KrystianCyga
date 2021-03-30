@@ -1,6 +1,6 @@
 #include <iostream>
 #include "BazaTestu.hh"
-#include "Statystyki.hh"
+#include "inc/Statystyki.hh"
 
 
 using namespace std;
@@ -37,31 +37,31 @@ int main(int argc, char **argv)
 
   while (PobierzNastpnePytanie(&BazaT, &WyrZ_PytanieTestowe))
   {
-    cout << "Podaj wynik operacji:";
-    cout << WyrZ_PytanieTestowe << endl;
-    cin >> pier;
-    while (cin.fail())
+    std::cout << "Podaj wynik operacji:";
+    std::cout << WyrZ_PytanieTestowe << endl;
+    std::cin >> pier;
+    while (std::cin.fail())
     {
       std::cin.clear();
       std::cin.ignore(10000, '\n');
       cerr << "Zly format liczby zespolonej. Podaj inna liczbe:" << endl;
       std::cin >> pier;
     }
-    a = pier.im; // wprowadzenie czesci rzeczywistej i urojonej liczby od uzytkownika pod zmienne pomocnicze w celu dalszego porownania
+    a = pier.im;
     b = pier.re;
-    pier = Oblicz(WyrZ_PytanieTestowe); // obliczanie prawdilowego wyniku
-    if (pier.re == a && pier.im == b)   // jesli porownanie liczb sie zgadza to odpowiedz dobra
+    pier = Oblicz(WyrZ_PytanieTestowe);
+    if (pier.re == a && pier.im == b) 
     {
       std::cout << "Odpowiedz poprawna :)" << endl
                 << endl;
-      ++staty.git; // zliczanie dobrych odpowiedzi
+      ++staty.git; 
     }
-    else // gdy porownanie zle, odpowiedz niepoprawna
+    else 
     {
       std::cout << "Zla odpowiedz" << endl
                 << "Poprawny wynik to: " << pier << endl
                 << endl;
-      ++staty.bad; // zliczanie zlych odpowiedzi
+      ++staty.bad;
     }
   }
 }

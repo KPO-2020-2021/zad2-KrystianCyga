@@ -7,7 +7,6 @@
 
 struct statystyka
 {
-    public:
     int good;
     int bad;
     
