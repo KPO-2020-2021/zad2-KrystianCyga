@@ -124,7 +124,7 @@ LZespolona operator*(LZespolona Skl1, LZespolona Skl2)
  *    Modul liczby w postaci double
  */
 
-double operator--(LZespolona Skl1)
+double operator ~ (LZespolona Skl1)
 {
   double Wynik;
   Wynik = sqrt(Skl1.re * Skl1.re + Skl1.im * Skl1.im);
