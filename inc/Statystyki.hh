@@ -8,11 +8,13 @@ struct statystyka
 {
     int good;
     int bad;
+
+    void wyswietl();
+    void addgood();
+    void addbad();
+    void inicjalizuj();
 };
 
-void wyswietl(statystyka &);
-void addgood(statystyka &);
-void addbad(statystyka &);
-void inicjalizuj(statystyka &);
+
 
 #endif

@@ -1,21 +1,21 @@
 #include "Statystyki.hh"
 #include <iostream>
 
-void wyswietl (statystyka& staty){
+void statystyka::wyswietl (){
     std::cout << "Statystyka testu\n";
-    std::cout << "Niepoprawne: "<<staty.bad<< std::endl;
-    std::cout << "Poprawne: "<<staty.good<< std::endl;
+    std::cout << "Niepoprawne: "<<bad<< std::endl;
+    std::cout << "Poprawne: "<<good<< std::endl;
 }
 
-void addgood (statystyka& staty){
-    ++staty.good;
+void statystyka::addgood (){
+    ++good;
 }
-void addbad (statystyka& staty){
-    ++staty.bad;
+void statystyka::addbad (){
+    ++bad;
 }
-void inicjalizuj (statystyka& staty){
-    staty.good=0;
-    staty.bad=0;
+void statystyka::inicjalizuj (){
+    good=0;
+    bad=0;
 }
 
 
