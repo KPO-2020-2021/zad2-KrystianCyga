@@ -159,7 +159,7 @@ LZespolona operator/(LZespolona Skl1, LZespolona Skl2)
 {
 
   LZespolona Wynik;
-  double modul = (--Skl2);
+  double modul = (~Skl2);
 
   if (modul)
   {
