@@ -1,5 +1,22 @@
 #include "WyrazenieZesp.hh"
 
+std::ostream &operator<<(std::ostream &struwyj, WyrazenieZesp wyr1)
+{
+  struwyj << "(" << wyr1.Arg1 << std::showpos << wyr1.Arg2 << "i"
+          << ")" << std::noshowpos;
+  return struwyj;
+}
+
+std::istream &operator>>(std::istream &struwej, WyrazenieZesp &wyr1)
+{
+  char znak, ilit;
+  struwej >> wyr1.Arg1;
+  struwej >> znak;
+  wyr1.Op=wczytajoper(znak);
+  struwej >> wyr1.Arg2;
+  return struwej;
+}
+
 Operator wczytajoper(char znak)
 {
     Operator oper;
@@ -90,6 +107,7 @@ void wyswietlwyraz(WyrazenieZesp wyr1)
     wyswietl(wyr1.Arg2);
     std::cout << "\n";
 }
+
 
 WyrazenieZesp wczytajwyrazenie()
 {
