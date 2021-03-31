@@ -38,3 +38,37 @@ TEST_CASE("Test LZespolona dzielenie przez skalar - zero") {
    WARN_THROWS(x/t);
 }
 
+TEST_CASE("Test LZespolona sprzezenie") {
+    LZespolona x,y;
+    
+    x.re = 2;
+    x.im = 2;
+
+    y.re = 2;
+    y.im = -2;
+ 
+   CHECK(!x==y);
+}
+
+TEST_CASE("Test LZespolona sprzezenie") {
+    LZespolona x,y;
+    
+    x.re = 2;
+    x.im = 0;
+
+    y.re = 2;
+    y.im = 0;
+ 
+   CHECK(!x==y);
+}
+
+TEST_CASE("Test LZespolona modul") {
+    LZespolona x;
+    double t = 5;
+    
+    x.re = 4;
+    x.im = 3;
+
+ 
+   CHECK(~x==t);
+}
