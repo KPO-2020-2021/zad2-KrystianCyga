@@ -8,14 +8,14 @@
 
 /*Funkcja przeciazenia operatora przesuniecia bitowego*/
 
-std::ostream &operator<<(std::ostream &struwyj, LZespolona skl)
+std::ostream &LZespolona::operator<<(std::ostream &struwyj)
 {
-  struwyj << "(" << skl.re << std::showpos << skl.im << "i"
+  struwyj << "(" << re << std::showpos << im << "i"
           << ")" << std::noshowpos;
   return struwyj;
 }
 
-std::istream &operator>>(std::istream &struwej, LZespolona &skl)
+std::istream &LZespolona::operator>>(std::istream &struwej)
 {
   char naw, lit;
   struwej >> naw;
@@ -26,10 +26,10 @@ std::istream &operator>>(std::istream &struwej, LZespolona &skl)
     struwej.setstate(std::ios::failbit);
     return struwej;
   }
-  struwej >> skl.re;
+  struwej >> re;
   if (struwej.fail())
     return struwej;
-  struwej >> skl.im;
+  struwej >> im;
   if (struwej.fail())
     return struwej;
   struwej >> lit;
@@ -60,9 +60,9 @@ std::istream &operator>>(std::istream &struwej, LZespolona &skl)
  *    True dla równych liczb zespolonych.
  */
 
-bool operator==(LZespolona Skl1, LZespolona Skl2)
+bool LZespolona::operator==(LZespolona const &Skl2)
 {
-  if (((sqrt((Skl1.re - Skl2.re) * (Skl1.re - Skl2.re)) <= MIN_DIFF) && ((sqrt((Skl1.im - Skl2.im) * (Skl1.im - Skl2.im)) <= MIN_DIFF))))
+  if (((sqrt((re - Skl2.re) * (re - Skl2.re)) <= MIN_DIFF) && ((sqrt((im - Skl2.im) * (im - Skl2.im)) <= MIN_DIFF))))
     return true;
   else
     return false;
@@ -76,20 +76,20 @@ bool operator==(LZespolona Skl1, LZespolona Skl2)
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona operator+(LZespolona Skl1, LZespolona Skl2)
+LZespolona LZespolona::operator+(LZespolona const &Skl2)
 {
   LZespolona Wynik;
 
-  Wynik.re = Skl1.re + Skl2.re;
-  Wynik.im = Skl1.im + Skl2.im;
+  Wynik.re = re + Skl2.re;
+  Wynik.im = im + Skl2.im;
   return Wynik;
 }
 
-LZespolona operator+=(LZespolona Skl1, LZespolona Skl2)
+LZespolona LZespolona::operator+=(LZespolona const &Skl2)
 {
-  Skl1.re += Skl2.re;
-  Skl1.im += Skl2.im;
-  return Skl1;
+  re += Skl2.re;
+  im += Skl2.im;
+  return (*this);
 }
 
 /*!
@@ -100,12 +100,12 @@ LZespolona operator+=(LZespolona Skl1, LZespolona Skl2)
  * Zwraca:
  *    Roznice dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona operator-(LZespolona Skl1, LZespolona Skl2)
+LZespolona LZespolona::operator-(LZespolona const &Skl2)
 {
   LZespolona Wynik;
 
-  Wynik.re = Skl1.re - Skl2.re;
-  Wynik.im = Skl1.im - Skl2.im;
+  Wynik.re = re - Skl2.re;
+  Wynik.im = im - Skl2.im;
   return Wynik;
 }
 
@@ -117,12 +117,12 @@ LZespolona operator-(LZespolona Skl1, LZespolona Skl2)
  * Zwraca:
  *    Iloczyn dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona operator*(LZespolona Skl1, LZespolona Skl2)
+LZespolona LZespolona::operator*(LZespolona const &Skl2)
 {
   LZespolona Wynik;
 
-  Wynik.re = (Skl1.re * Skl2.re - Skl1.im * Skl2.im);
-  Wynik.im = (Skl1.im * Skl2.re + Skl1.re * Skl2.im);
+  Wynik.re = (re * Skl2.re - im * Skl2.im);
+  Wynik.im = (im * Skl2.re + re * Skl2.im);
   return Wynik;
 }
 
@@ -134,11 +134,9 @@ LZespolona operator*(LZespolona Skl1, LZespolona Skl2)
  *    Modul liczby w postaci double
  */
 
-double operator~(LZespolona Skl1)
+double LZespolona::operator~()
 {
-  double Wynik;
-  Wynik = sqrt(Skl1.re * Skl1.re + Skl1.im * Skl1.im);
-  return Wynik;
+  return sqrt(re * re + im * im);
 }
 
 /*!
@@ -148,12 +146,12 @@ double operator~(LZespolona Skl1)
  * Zwraca:
  *    Sprzezenie liczby w postaci dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona operator!(LZespolona Skl1)
+LZespolona LZespolona::operator!()
 {
   LZespolona Wynik;
 
-  Wynik.re = Skl1.re;
-  Wynik.im = -Skl1.im;
+  Wynik.re = re;
+  Wynik.im = -im;
   return Wynik;
 }
 
@@ -165,40 +163,39 @@ LZespolona operator!(LZespolona Skl1)
  * Zwraca:
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona operator/(LZespolona Skl1, LZespolona Skl2)
+LZespolona LZespolona::operator/(LZespolona const &Skl2)
 {
 
-  LZespolona Wynik;
-  double modul = (~Skl2);
+  LZespolona beka=Skl2,Wynik;
+  double modul = (~beka);
 
   if (modul)
   {
-    Wynik.re = (Skl1.re * Skl2.re + Skl1.im * Skl2.im) / modul;
-    Wynik.im = (-Skl1.re * Skl2.im + Skl1.im * Skl2.re) / modul;
-
-    return Wynik;
+    Wynik.re = (re * Skl2.re + im * Skl2.im) / modul;
+    Wynik.im = (-re * Skl2.im + im * Skl2.re) / modul;
   }
   else
   {
     throw "Error";
   }
-  return Skl1;
+  return (Wynik);
 }
 
-LZespolona operator/=(LZespolona Skl1, LZespolona Skl2)
+LZespolona LZespolona::operator/=(LZespolona const &Skl2)
 {
-  double modul = (~Skl2);
+  LZespolona beka=Skl2;
+  double modul = (~beka);
 
   if (modul)
   {
-    Skl1.re = (Skl1.re * Skl2.re + Skl1.im * Skl2.im) / modul;
-    Skl1.re = (-Skl1.re * Skl2.im + Skl1.im * Skl2.re) / modul;
+    re = (re * Skl2.re + im * Skl2.im) / modul;
+    re = (-re * Skl2.im + im * Skl2.re) / modul;
   }
   else
   {
     throw "Error";
   }
-  return Skl1;
+  return (*this);
 }
 
 /*!
@@ -210,14 +207,14 @@ LZespolona operator/=(LZespolona Skl1, LZespolona Skl2)
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  */
 
-LZespolona operator/(LZespolona Skl1, double skalar)
+LZespolona LZespolona::operator/(double skalar)
 {
 
   LZespolona Wynik;
   if (skalar)
   {
-    Wynik.re = Skl1.re / skalar;
-    Wynik.im = Skl1.im / skalar;
+    Wynik.re = re / skalar;
+    Wynik.im = im / skalar;
 
     return Wynik;
   }
@@ -225,14 +222,14 @@ LZespolona operator/(LZespolona Skl1, double skalar)
   {
     throw "Error";
   }
-  return Skl1;
+  return (*this);
 }
 
 /*funkcja wyswietlajaca liczbe*/
 
-void wyswietl(LZespolona licz)
+void LZespolona::wyswietl()
 {
-  std::cout << "(" << licz.re << std::showpos << licz.im << "i"
+  std::cout << "(" << re << std::showpos << im << "i"
             << ")" << std::noshowpos;
 }
 
@@ -252,28 +249,28 @@ LZespolona wczytaj()
   return licz;
 }
 
-double argument(LZespolona Skl1)
+double LZespolona::argument()
 {
   double arg;
-  if (Skl1.im == 0 && Skl1.re != 0)
+  if (im == 0 && re != 0)
   {
     arg = 0;
   }
-  else if (Skl1.im > 0 && Skl1.re == 0)
+  else if (im > 0 && re == 0)
   {
     arg = M_PI / 2;
   }
-  else if (Skl1.im < 0 && Skl1.re == 0)
+  else if (im < 0 && re == 0)
   {
     arg = -M_PI / 2;
   }
-  else if (Skl1.im != 0 && Skl1.re > 0)
+  else if (im != 0 && re > 0)
   {
-    arg=atan2(Skl1.im,Skl1.re);
+    arg=atan2(im,re);
   }
-  else if (Skl1.im != 0 && Skl1.re < 0)
+  else if (im != 0 && re < 0)
   {
-    arg=(atan2(Skl1.im,Skl1.re)+M_PI);
+    arg=(atan2(im,re)+M_PI);
   }
   return arg;
 }
