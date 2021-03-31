@@ -72,3 +72,4 @@ TEST_CASE("Test LZespolona modul") {
  
    CHECK(~x==t);
 }
+

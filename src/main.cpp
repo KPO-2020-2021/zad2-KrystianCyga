@@ -27,7 +27,8 @@ int main(int argc, char **argv)
   cout << " Start testu arytmetyki zespolonej: " << argv[1] << endl;
   cout << endl;
 
-  WyrazenieZesp WyrZ_PytanieTestowe;
+  // Zmienne pomocnicze do głównej pętli 
+  WyrazenieZesp WyrZ_PytanieTestowe; 
   LZespolona pier;
   statystyka staty;
   double a, b;
@@ -49,7 +50,7 @@ int main(int argc, char **argv)
     }
     a = pier.im;
     b = pier.re;
-    pier = (WyrZ_PytanieTestowe.oblicz(WyrZ_PytanieTestowe));   //Obliczanie poprawnej odpowiedzi
+    pier = (WyrZ_PytanieTestowe.oblicz(WyrZ_PytanieTestowe));   // Obliczanie poprawnej odpowiedzi
     if (pier.re == a && pier.im == b)                           // Sprawdzenie poprawnosci odpowiedzi
     {
       std::cout << "Odpowiedz poprawna" << endl
