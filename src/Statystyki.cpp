@@ -1,6 +1,10 @@
 #include "Statystyki.hh"
 #include <iostream>
 
+
+/*
+Definicje metod dla Statystyki 
+*/
 void statystyka::wyswietl (){
     std::cout << "Statystyka testu\n";
     std::cout << "Niepoprawne: "<<bad<< std::endl;

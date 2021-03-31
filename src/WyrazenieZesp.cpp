@@ -1,6 +1,6 @@
 #include "iostream"
 #include "WyrazenieZesp.hh"
-
+// Operatory przeciazenia dla wyrazenia zespolonego
 std::ostream& operator<<(std::ostream& struwyj, WyrazenieZesp wyr1)
 {
     struwyj<< wyr1.Arg1 << wyr1.dajsymbol(wyr1.Op) << wyr1.Arg2;
@@ -16,7 +16,7 @@ std::istream& operator>>(std::istream& struwej, WyrazenieZesp &wyr1)
     struwej >> wyr1.Arg2;
     return struwej;
 }
-
+// Funkcja dopasowujaca operator dzialania arytmetycznego "enum operator" 
 Operator WyrazenieZesp::wczytajoper(char znak)
 {
     Operator oper;
@@ -37,6 +37,8 @@ Operator WyrazenieZesp::wczytajoper(char znak)
     }
     return oper;
 }
+
+// Funkcja wczytujaca operator dzialania 
 Operator WyrazenieZesp::wczytajoper()
 {
     Operator oper;
@@ -60,6 +62,7 @@ Operator WyrazenieZesp::wczytajoper()
     return oper;
 }
 
+//Funkcja zwracająca symbol arytmetyczny
 char WyrazenieZesp::dajsymbol(Operator oper)
 {
     char znak;
@@ -81,7 +84,7 @@ char WyrazenieZesp::dajsymbol(Operator oper)
     }
     return znak;
 }
-
+// Funkcja obliczajaca i zwracajaca poprawna odpowiedz
 LZespolona WyrazenieZesp::oblicz(WyrazenieZesp wyr1)
 {
     LZespolona pier;
@@ -104,6 +107,8 @@ LZespolona WyrazenieZesp::oblicz(WyrazenieZesp wyr1)
     }
     return pier;
 }
+
+//Funkcja wyswietlajaca operator arytmetyczny
 void WyrazenieZesp::wyswietloper(Operator oper)
 {
     switch (oper)
@@ -122,7 +127,7 @@ void WyrazenieZesp::wyswietloper(Operator oper)
         break;
     }
 }
-
+//Wyswietlenie wyrazenia
 void WyrazenieZesp::wyswietlwyraz(WyrazenieZesp wyr1)
 {
     wyswietl(Arg1);
@@ -131,6 +136,7 @@ void WyrazenieZesp::wyswietlwyraz(WyrazenieZesp wyr1)
     std::cout << "\n";
 }
 
+//Wczytanie calego wyrazenia
 WyrazenieZesp WyrazenieZesp::wczytajwyrazenie()
 {
     LZespolona pier, drug;

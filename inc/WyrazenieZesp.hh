@@ -23,6 +23,7 @@ struct WyrazenieZesp
   Operator Op;     // Opertor wyrazenia arytmetycznego
   LZespolona Arg2; // Drugi argument wyrazenia arytmetycznego
 
+  // Metody Struktury Wyrazenia zespolonego
   Operator wczytajoper(char znak);
   Operator wczytajoper();
   char dajsymbol(Operator oper);
@@ -32,6 +33,7 @@ struct WyrazenieZesp
   WyrazenieZesp wczytajwyrazenie();
 };
 
+// Przeciazenia opretorow przesuniecia bitowego dla wyrazenia zespolonego
 std::ostream &operator<<(std::ostream &struwyj, WyrazenieZesp wyr1);
 std::istream &operator>>(std::istream &struwej, WyrazenieZesp &wyr1);
 

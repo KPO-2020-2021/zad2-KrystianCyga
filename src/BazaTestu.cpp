@@ -17,6 +17,10 @@ static WyrazenieZesp  TestLatwy[] =
     {{4,8}, Op_Dziel, {1,0}},
   };
 
+/*
+ * Tablica, ktora jest widoczna tylko w tym module.
+ * Zawiera ona tresc trudnego testu.
+ */
 static WyrazenieZesp  TestTrudny[] =
   { {{2.5,0.2}, Op_Dodaj, {-5,9}},
     {{-1,-1}, Op_Odejmij, {-5,-6}},

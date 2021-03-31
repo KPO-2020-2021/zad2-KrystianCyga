@@ -6,11 +6,12 @@ struct statystyka
 {
     int good;
     int bad;
-    
-    void wyswietl();
-    void addgood();
-    void addbad();
-    void inicjalizuj();
+
+     // Metody struktury statystyka:
+    void wyswietl();        // Wyświetlenie            
+    void addgood();         //Dodanie dobrej odpowiedzi
+    void addbad();          //Dodanie zlej odpowiedzi
+    void inicjalizuj();     // Wyzerowanie 
 };
 
 

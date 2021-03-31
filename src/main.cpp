@@ -34,12 +34,13 @@ int main(int argc, char **argv)
 
   staty.inicjalizuj();
 
+  // Glowna petla programu pobierajaca pytania z bazy
   while (PobierzNastpnePytanie(&BazaT, &WyrZ_PytanieTestowe))
   {
     std::cout << "Podaj wynik operacji:";
-    std::cout << WyrZ_PytanieTestowe << endl;
-    std::cin >> pier;
-    while (std::cin.fail())
+    std::cout << WyrZ_PytanieTestowe << endl;   //Wyswietlanie pytania testowego
+    std::cin >> pier;                           //Proces pobierania odpowiedzi
+    while (std::cin.fail())                     //Zabezpieczenie strumienia danych
     {
       std::cin.clear();
       std::cin.ignore(10000, '\n');
@@ -48,8 +49,8 @@ int main(int argc, char **argv)
     }
     a = pier.im;
     b = pier.re;
-    pier = (WyrZ_PytanieTestowe.oblicz(WyrZ_PytanieTestowe));
-    if (pier.re == a && pier.im == b) 
+    pier = (WyrZ_PytanieTestowe.oblicz(WyrZ_PytanieTestowe));   //Obliczanie poprawnej odpowiedzi
+    if (pier.re == a && pier.im == b)                           // Sprawdzenie poprawnosci odpowiedzi
     {
       std::cout << "Odpowiedz poprawna" << endl
                 << endl;
@@ -65,6 +66,6 @@ int main(int argc, char **argv)
   }
   std::cout<<"Koniec Testu\n";
 
-  staty.wyswietl();
+  staty.wyswietl();       //Wyswietlenie statystyk koncowych 
 }
 

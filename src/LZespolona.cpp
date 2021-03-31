@@ -170,16 +170,16 @@ LZespolona operator/(LZespolona Skl1, LZespolona Skl2)
   }
   else
   {
-    std::cerr << "\nModul liczby Z_2 jest zerem!\nliczb nie mozna podzielić!\n";
+    std::cerr << "\nModul liczby Z_2 jest zerem!\nLiczb nie mozna podzielić!\n";
   }
   return Skl1;
 }
 
 /*!
- * Realizuje dzielenie liczby zespolonej przez druga liczbe zespolona.
+ * Realizuje dzielenie liczby zespolonej skalar.
  * Argumenty:
  *    Skl1 - dzielona liczba zespolona,
- *    Skl2 - liczba zespolona przez ktora dzielimy.
+ *    skalar - liczba typui double.
  * Zwraca:
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  */
@@ -197,7 +197,7 @@ LZespolona operator/ (LZespolona Skl1, double skalar)
   }
   else
   {
-    std::cerr << "\nskalar jest zerem!\nliczby nie mozna podzielić!\n";
+    std::cerr << "\nSkalar jest zerem!\nLiczby nie mozna podzielić!\n";
   }
   return Skl1;
 }
