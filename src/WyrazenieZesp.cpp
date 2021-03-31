@@ -1,5 +1,7 @@
 #include "iostream"
 #include "WyrazenieZesp.hh"
+
+
 // Operatory przeciazenia dla wyrazenia zespolonego
 std::ostream& operator<<(std::ostream& struwyj, WyrazenieZesp wyr1)
 {

@@ -21,12 +21,12 @@ struct  LZespolona {
 };
 
 
-/*
- * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
- */
-
 std::ostream& operator << (std::ostream& struwyj,LZespolona skl);
 std::istream& operator >> (std::istream& struwej,LZespolona &skl);
+
+LZespolona operator /= (LZespolona Skl1, LZespolona Skl2);     //Dzielenie V2
+LZespolona operator += (LZespolona Skl1, LZespolona Skl2);     //Dodawanie V2
+double arg(LZespolona Skl1);                                   //wyswietlanie Argumentu
 
 void wyswietl(LZespolona licz);
 LZespolona wczytaj();

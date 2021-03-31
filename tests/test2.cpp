@@ -22,8 +22,8 @@ TEST_CASE("Test LZespolona dzielenie przez skalar 2") {
     x.re = 2;
     x.im = 2;
 
-    y.re = 1;
-    y.im = 1;
+    y.re = 0.666667;
+    y.im = 0.666667;
    
     CHECK(x/t == y);
 }

@@ -131,7 +131,7 @@ TEST_CASE("test LZespolona Iloraz"){
     y.re = 1;
     y.im = 1;
 
-    z.re = 1;
+    z.re = 1.41421;
     z.im = 0;
     
     CHECK(x/y == z);
@@ -145,7 +145,7 @@ TEST_CASE("test2 LZespolona Iloraz"){
     y.re = 1.2;
     y.im = 1.2;
 
-    z.re = 0.916666;
+    z.re = 1.55563;
     z.im = 0;
     
     CHECK(x/y == z);

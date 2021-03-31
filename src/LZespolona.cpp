@@ -1,5 +1,8 @@
 #include "LZespolona.hh"
 #include <cmath>
+#include <stdexcept>
+#include <cstdlib>
+#include <climits>
 
 #define MIN_DIFF 0.00001
 
@@ -59,7 +62,7 @@ std::istream &operator>>(std::istream &struwej, LZespolona &skl)
 
 bool operator==(LZespolona Skl1, LZespolona Skl2)
 {
-  if (abs(Skl1.re - Skl2.re) <= MIN_DIFF && abs(Skl1.im - Skl2.im) <= MIN_DIFF)
+  if (((sqrt((Skl1.re - Skl2.re) * (Skl1.re - Skl2.re)) <= MIN_DIFF) && ((sqrt((Skl1.im - Skl2.im) * (Skl1.im - Skl2.im)) <= MIN_DIFF))))
     return true;
   else
     return false;
@@ -80,6 +83,13 @@ LZespolona operator+(LZespolona Skl1, LZespolona Skl2)
   Wynik.re = Skl1.re + Skl2.re;
   Wynik.im = Skl1.im + Skl2.im;
   return Wynik;
+}
+
+LZespolona operator+=(LZespolona Skl1, LZespolona Skl2)
+{
+  Skl1.re += Skl2.re;
+  Skl1.im += Skl2.im;
+  return Skl1;
 }
 
 /*!
@@ -124,7 +134,7 @@ LZespolona operator*(LZespolona Skl1, LZespolona Skl2)
  *    Modul liczby w postaci double
  */
 
-double operator ~ (LZespolona Skl1)
+double operator~(LZespolona Skl1)
 {
   double Wynik;
   Wynik = sqrt(Skl1.re * Skl1.re + Skl1.im * Skl1.im);
@@ -170,7 +180,23 @@ LZespolona operator/(LZespolona Skl1, LZespolona Skl2)
   }
   else
   {
-    std::cerr << "\nModul liczby Z_2 jest zerem!\nLiczb nie mozna podzielić!\n";
+    throw "Error";
+  }
+  return Skl1;
+}
+
+LZespolona operator/=(LZespolona Skl1, LZespolona Skl2)
+{
+  double modul = (~Skl2);
+
+  if (modul)
+  {
+    Skl1.re = (Skl1.re * Skl2.re + Skl1.im * Skl2.im) / modul;
+    Skl1.re = (-Skl1.re * Skl2.im + Skl1.im * Skl2.re) / modul;
+  }
+  else
+  {
+    throw "Error";
   }
   return Skl1;
 }
@@ -184,23 +210,24 @@ LZespolona operator/(LZespolona Skl1, LZespolona Skl2)
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  */
 
-LZespolona operator/ (LZespolona Skl1, double skalar)
+LZespolona operator/(LZespolona Skl1, double skalar)
 {
 
   LZespolona Wynik;
   if (skalar)
   {
-    Wynik.re = Skl1.re/skalar;
-    Wynik.im = Skl1.im/skalar;
+    Wynik.re = Skl1.re / skalar;
+    Wynik.im = Skl1.im / skalar;
 
     return Wynik;
   }
   else
   {
-    std::cerr << "\nSkalar jest zerem!\nLiczby nie mozna podzielić!\n";
+    throw "Error";
   }
   return Skl1;
 }
+
 /*funkcja wyswietlajaca liczbe*/
 
 void wyswietl(LZespolona licz)
@@ -218,8 +245,35 @@ LZespolona wczytaj()
   std::cin >> licz.re;
   std::cin >> znak;
   std::cin >> licz.im;
-  if (znak=='-') licz.im=licz.im*(-1);
+  if (znak == '-')
+    licz.im = licz.im * (-1);
   std::cin >> znak;
   std::cin >> znak;
   return licz;
+}
+
+double argument(LZespolona Skl1)
+{
+  double arg;
+  if (Skl1.im == 0 && Skl1.re != 0)
+  {
+    arg = 0;
+  }
+  else if (Skl1.im > 0 && Skl1.re == 0)
+  {
+    arg = M_PI / 2;
+  }
+  else if (Skl1.im < 0 && Skl1.re == 0)
+  {
+    arg = -M_PI / 2;
+  }
+  else if (Skl1.im != 0 && Skl1.re > 0)
+  {
+    arg=atan2(Skl1.im,Skl1.re);
+  }
+  else if (Skl1.im != 0 && Skl1.re < 0)
+  {
+    arg=(atan2(Skl1.im,Skl1.re)+M_PI);
+  }
+  return arg;
 }
