@@ -32,13 +32,11 @@ LZespolona LZespolona::operator + (LZespolona const &Skl2);   //Dodawanie
 LZespolona LZespolona::operator-(LZespolona const &Skl2);         // Odejmowanie
 LZespolona LZespolona::operator*(LZespolona const &Skl2);         //Mnozenie
 
-std::ostream& LZespolona::operator << (std::ostream& struwyj);
-std::istream& LZespolona::operator >> (std::istream& struwej);
 };
 
 
-
-
+std::ostream& operator << (std::ostream& struwyj,LZespolona skl);
+std::istream& operator >> (std::istream& struwej,LZespolona &skl);
 
 
 

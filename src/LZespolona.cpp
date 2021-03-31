@@ -8,14 +8,14 @@
 
 /*Funkcja przeciazenia operatora przesuniecia bitowego*/
 
-std::ostream &LZespolona::operator<<(std::ostream &struwyj)
+std::ostream &operator<<(std::ostream &struwyj, LZespolona skl)
 {
-  struwyj << "(" << re << std::showpos << im << "i"
+  struwyj << "(" << skl.re << std::showpos << skl.im << "i"
           << ")" << std::noshowpos;
   return struwyj;
 }
 
-std::istream &LZespolona::operator>>(std::istream &struwej)
+std::istream &operator>>(std::istream &struwej, LZespolona &skl)
 {
   char naw, lit;
   struwej >> naw;
@@ -26,10 +26,10 @@ std::istream &LZespolona::operator>>(std::istream &struwej)
     struwej.setstate(std::ios::failbit);
     return struwej;
   }
-  struwej >> re;
+  struwej >> skl.re;
   if (struwej.fail())
     return struwej;
-  struwej >> im;
+  struwej >> skl.im;
   if (struwej.fail())
     return struwej;
   struwej >> lit;
