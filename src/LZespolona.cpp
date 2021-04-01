@@ -62,7 +62,7 @@ std::istream &operator>>(std::istream &struwej, LZespolona &skl)
 
 bool LZespolona::operator==(LZespolona const &Skl2)
 {
-  if (((sqrt((re - Skl2.re) * (re - Skl2.re)) <= MIN_DIFF) && ((sqrt((im - Skl2.im) * (im - Skl2.im)) <= MIN_DIFF))))
+  if ((fabs(re - Skl2.re)<= MIN_DIFF) && (fabs(im - Skl2.im) <= MIN_DIFF))
     return true;
   else
     return false;

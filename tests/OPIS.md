@@ -4,8 +4,10 @@ Calosc wyglada tak ze wczoraj po zajeciach postanowilem zamienic wszytkie funkcj
 Przed ta operacja program sie kompilowal,testy dzialaly i test_arytm_zesp dzialal.
 
 Po zamianie na metody wystapilo wiele bledow ktore zaczalem poprawiac i mysle ze wiekszosc mi sie udalo.
-Metody wygladaja poprawnie i ich wywolania rowniez. program koncowy sie kompiluje. 
-test_arytm_zesp dziala, lecz niekiedy zle porownuje odpowiedzi i czasem zalicza  a czasem nie. Problem moze byc zwiazany z samym operatorem porownania. 
+Metody wygladaja poprawnie i ich wywolania rowniez. program koncowy sie kompiluje.
+
+test_arytm_zesp DZIALA POPRAWNIE, 
+
 
 Po modyfikacji na metody popsuly sie rowniez testy i teraz po wpisaniu make test wystepuja bledy z "doctest'em".
 

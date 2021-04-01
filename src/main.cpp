@@ -29,9 +29,9 @@ int main(int argc, char **argv)
 
   // Zmienne pomocnicze do głównej pętli 
   WyrazenieZesp WyrZ_PytanieTestowe; 
-  LZespolona pier;
+  LZespolona pier,dobra;
   statystyka staty;
-  double a, b;
+  
 
   staty.inicjalizuj();
 
@@ -48,10 +48,9 @@ int main(int argc, char **argv)
       cerr << "Zly format liczby zespolonej. Podaj inna liczbe:" << endl;
       std::cin >> pier;
     }
-    a = pier.im;
-    b = pier.re;
-    pier = (WyrZ_PytanieTestowe.oblicz(WyrZ_PytanieTestowe));   // Obliczanie poprawnej odpowiedzi
-    if (pier.re == a && pier.im == b)                           // Sprawdzenie poprawnosci odpowiedzi
+
+    dobra = (WyrZ_PytanieTestowe.oblicz(WyrZ_PytanieTestowe));   // Obliczanie poprawnej odpowiedzi
+    if (dobra==pier)                           // Sprawdzenie poprawnosci odpowiedzi
     {
       std::cout << "Odpowiedz poprawna" << endl
                 << endl;
