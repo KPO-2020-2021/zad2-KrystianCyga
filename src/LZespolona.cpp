@@ -252,11 +252,7 @@ LZespolona wczytaj()
 double LZespolona::argument()
 {
   double arg;
-  if (im == 0 && re != 0)
-  {
-    arg = 0;
-  }
-  else if (im > 0 && re == 0)
+  if (im > 0 && re == 0)
   {
     arg = M_PI / 2;
   }
@@ -271,6 +267,14 @@ double LZespolona::argument()
   else if (im != 0 && re < 0)
   {
     arg=(atan2(im,re)+M_PI);
+  }
+  else if (im == 0 && re < 0)
+  {
+    arg=M_PI;
+  }
+  else if (im == 0 && re > 0)
+  {
+    arg=0;
   }
   return arg;
 }

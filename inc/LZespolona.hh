@@ -18,19 +18,19 @@ struct  LZespolona {
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
 
-double LZespolona::operator ~ ();                    //Modul liczby
+double operator ~ ();                    //Modul liczby
 LZespolona operator += (LZespolona const &Skl2);     //Dodawanie V2
 LZespolona operator /= (LZespolona const &Skl2);     //Dzielenie V2
 void wyswietl();
 double argument();                                   //wyswietlanie Argumentu
-LZespolona LZespolona::operator/ (double skalar);    //Dzielenie przez liczbe
-LZespolona LZespolona::operator/(LZespolona const &Skl2);         //Dzielenie  
-LZespolona LZespolona::operator!();                          //Sprzezenie liczby
+LZespolona operator/ (double skalar);    //Dzielenie przez liczbe
+LZespolona operator/(LZespolona const &Skl2);         //Dzielenie  
+LZespolona operator!();                          //Sprzezenie liczby
 LZespolona wczytaj();
-bool  LZespolona::operator == (LZespolona const &Skl2);        //Porownanie
-LZespolona LZespolona::operator + (LZespolona const &Skl2);   //Dodawanie
-LZespolona LZespolona::operator-(LZespolona const &Skl2);         // Odejmowanie
-LZespolona LZespolona::operator*(LZespolona const &Skl2);         //Mnozenie
+bool  operator == (LZespolona const &Skl2);        //Porownanie
+LZespolona operator + (LZespolona const &Skl2);   //Dodawanie
+LZespolona operator-(LZespolona const &Skl2);         // Odejmowanie
+LZespolona operator*(LZespolona const &Skl2);         //Mnozenie
 
 };
 

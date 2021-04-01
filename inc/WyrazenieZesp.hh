@@ -23,7 +23,7 @@ struct WyrazenieZesp
   Operator Op;     // Opertor wyrazenia arytmetycznego
   LZespolona Arg2; // Drugi argument wyrazenia arytmetycznego
 
-  // Metody Struktury Wyrazenia zespolonego
+  // Metody Wyrazenia zespolonego
   Operator wczytajoper(char znak);
   Operator wczytajoper();
   char dajsymbol(Operator oper);

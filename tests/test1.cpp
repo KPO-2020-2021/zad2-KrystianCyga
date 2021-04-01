@@ -32,6 +32,35 @@ TEST_CASE("test2 LZespolona Suma"){
     CHECK(x+y == z);
 }
 
+TEST_CASE("test1 LZespolona Suma v2"){
+    LZespolona x, y, z;
+
+    x.re = 0;
+    x.im = 0;
+
+    y.re = 0;
+    y.im = 0;
+
+    z.re = 0;
+    z.im = 0;
+    
+    CHECK(x+=y == z);
+}
+TEST_CASE("test2 LZespolona Suma v2"){
+    LZespolona x, y, z;
+
+    x.re = 1;
+    x.im = 1;
+
+    y.re = 1;
+    y.im = -3;
+
+    z.re = 2;
+    z.im = -2;
+    
+    CHECK(x+=y == z);
+}
+
 TEST_CASE("test3 LZespolona Suma"){
     LZespolona x, y, z;
 
@@ -43,6 +72,36 @@ TEST_CASE("test3 LZespolona Suma"){
 
     z.re = 0.2;
     z.im = 0.2;
+    
+    CHECK(x+y == z);
+}
+
+TEST_CASE("test3 LZespolona Suma v2"){
+    LZespolona x, y, z;
+
+    x.re = 0.1;
+    x.im = 0.1;
+
+    y.re = 0.1;
+    y.im = 0.1;
+
+    z.re = 0.2;
+    z.im = 0.2;
+    
+    CHECK(x+=y == z);
+}
+
+TEST_CASE("test4 LZespolona Suma"){
+    LZespolona x, y, z;
+
+    x.re = 0.00001;
+    x.im = 0.00001;
+
+    y.re = 0.00001;
+    y.im = 0.00001;
+
+    z.re = 0.00002;
+    z.im = 0.00002;
     
     CHECK(x+y == z);
 }
@@ -59,7 +118,7 @@ TEST_CASE("test4 LZespolona Suma"){
     z.re = 0.00002;
     z.im = 0.00002;
     
-    CHECK(x+y == z);
+    CHECK(x+=y == z);
 }
 
 TEST_CASE("test LZespolona Roznica"){
@@ -149,4 +208,105 @@ TEST_CASE("test2 LZespolona Iloraz"){
     z.im = 0;
     
     CHECK(x/y == z);
+}
+
+TEST_CASE("test LZespolona Iloraz"){
+    LZespolona x, y, z;
+
+    x.re = 1;
+    x.im = 1;
+
+    y.re = 1;
+    y.im = 1;
+
+    z.re = 1;
+    z.im = 0;
+    
+    CHECK(x/=y == z);
+}
+TEST_CASE("test2 LZespolona Iloraz"){
+    LZespolona x, y, z;
+
+    x.re = 1.1;
+    x.im = 1.1;
+
+    y.re = 1.2;
+    y.im = 1.2;
+
+    z.re = 0.916666;
+    z.im = 0;
+    
+    CHECK(x/=y == z);
+}
+
+TEST_CASE("TEST f. argumentu"){
+    LZespolona x;
+    double arg;
+
+    x.re = 1/2;
+    x.im = 1/2;
+    arg=M_PI/4;
+
+    
+    CHECK(x.argument()==arg);
+}
+
+TEST_CASE("TEST f. argumentu"){
+    LZespolona x;
+    double arg;
+
+    x.re = 0;
+    x.im = 6;
+    arg=M_PI/2;
+
+    
+    CHECK(x.argument()==arg);
+}
+
+TEST_CASE("TEST f. argumentu"){
+    LZespolona x;
+    double arg;
+
+    x.re = 0;
+    x.im = -5;
+    arg=-M_PI/2;
+
+    
+    CHECK(x.argument()==arg);
+}
+
+TEST_CASE("TEST f. argumentu"){
+    LZespolona x;
+    double arg;
+
+    x.re = 0;
+    x.im = 1/2;
+    arg=M_PI/2;
+
+    
+    CHECK(x.argument()==arg);
+}
+
+TEST_CASE("TEST f. argumentu"){
+    LZespolona x;
+    double arg;
+
+    x.re = 5;
+    x.im = 0;
+    arg=0;
+
+    
+    CHECK(x.argument()==arg);
+}
+
+TEST_CASE("TEST f. argumentu"){
+    LZespolona x;
+    double arg;
+
+    x.re = -15;
+    x.im = 0;
+    arg=M_PI;
+
+    
+    CHECK(x.argument()==arg);
 }

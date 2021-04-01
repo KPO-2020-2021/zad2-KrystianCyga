@@ -95,16 +95,16 @@ LZespolona WyrazenieZesp::oblicz(WyrazenieZesp wyr1)
     switch (Op)
     {
     case Op_Dodaj:
-        return operator+(Arg1, Arg2);
+        return Arg1.operator+(Arg2);
         break;
     case Op_Odejmij:
-        return operator-(Arg1, Arg2);
+        return Arg1.operator-(Arg2);
         break;
     case Op_Dziel:
-        return operator/(Arg1, Arg2);
+        return Arg1.operator/(Arg2);
         break;
     case Op_Mnoz:
-        return operator*(Arg1, Arg2);
+        return Arg1.operator*(Arg2);
         break;
     }
     return pier;
@@ -132,22 +132,31 @@ void WyrazenieZesp::wyswietloper(Operator oper)
 //Wyswietlenie wyrazenia
 void WyrazenieZesp::wyswietlwyraz(WyrazenieZesp wyr1)
 {
-    wyswietl(Arg1);
+    Arg1.wyswietl();
     wyswietloper(Op);
-    wyswietl(Arg2);
+    Arg2.wyswietl();
     std::cout << "\n";
 }
+
+/*
 
 //Wczytanie calego wyrazenia
 WyrazenieZesp WyrazenieZesp::wczytajwyrazenie()
 {
     LZespolona pier, drug;
+    Operator opera;
     WyrazenieZesp wyr1;
-    pier = wczytaj();
-    Operator oper = WyrazenieZesp::wczytajoper();
-    drug = wczytaj();
-    Arg1 = pier;
-    Op = oper;
-    Arg2 = drug;
+
+    pier=pier.wczytaj();
+
+    opera=opera.wczytajoper();
+
+    drug=drug.wczytaj();
+
+    wyr1.Arg1 = pier;
+    wyr1.Op = opera;
+    wyr1.Arg2 = drug;
     return wyr1;
 }
+
+*/
